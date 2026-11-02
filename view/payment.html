@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHub | Payment</title>
+    <!-- document tag icon  -->
+    <link rel="icon" href="../assets/images/logo/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- bootstrap link  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/payment.css">
+</head>
+<body>
+    <div class="item">
+        <div class="main">
+            
+            <i class="fa-regular fa-credit-card d-none d-md-inline "></i>
+            <h4 class="d-none d-md-inline course-price">
+                <!-- course price goes here  -->
+            </h4>
+            <div class="line d-none d-md-inline"></div>    
+            <div class="text d-none d-md-inline course-name">
+                <!-- course name goes here  -->
+            </div>
+            <img class="img d-none d-md-inline" src="../assets/images/logo/1.png" alt="LearnHub">
+            <div class="item-box">
+
+                <!-- back btn  -->
+                <a href="./dashboard.html" class="d-none d-md-inline">
+                    <i class="fa-regular fa-circle-xmark"></i>
+                </a>
+
+                <!-- back btn  -->
+                <a href="./dashboard.html" class="d-inline d-md-none">
+                    <i class="fa-solid fa-circle-xmark mark2"></i>
+                </a>
+
+                <div class="items">
+                    <input type="radio" name="check" id="balance" value="balance" class="pay check me-2"><label for="balance">Balance</label>
+                    <input type="radio" name="check" id="credit" value="credit" class="pay check me-2" checked><label for="credit">Credit Card</label>
+                </div> 
+                <!-- <i class="fa-regular fa-circle-xmark"></i> -->
+                <div class="input">
+                    <input type="email" placeholder="Email Address" class="box">
+                    <input type="text" name="card" id="card" placeholder="Card Number" class="box">
+                    <input type="date" name="card" id="card" placeholder="MM | YY" class="box">
+                    
+                    <div class="rem d-inline d-md-none d-flex">
+                        <input type="checkbox" class="me-1">Remember Me
+                    </div>
+
+                    <div class="rem2 d-none d-md-block d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                            <input type="checkbox" class="me-1"><span>Remember Me</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="input1">
+                    <input type="email" placeholder="Phone Number" class="box">
+                    <input type="text" name="card" id="card" placeholder="Enter OTP" class="box">
+                    <button id="rem" class="d-inline d-md-none">Get OTP</button>
+                    <button id="rem222" class="d-none d-md-inline">Get OTP</button>
+                </div>
+                <!-- pay now btn  -->
+                <div class="btn-wrapper2" id="btn-wrapper2">
+                    <button id="btn-pay-now" class="btn pay-now-btn">Pay Now</button>
+                </div>
+                <div class="d-flex align-items-center justify-content-evenly d-md-none ">
+
+                    <span class="title"></span>
+                    <span class="total ">Total : $<small class="price">89.0</small></span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery cdn  -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".input1").hide();
+            $(".check").click(function(){
+                $checkValue = $(this).val();
+               if($checkValue == "balance"){
+                    $(".input1").show();
+                    $(".input").hide();
+               }else if($checkValue == "credit"){
+                    $(".input1").hide();
+                    $(".input").show();
+
+               }
+                else if($checkValue == "balance"){
+                    $(".input").hide();
+                    $(".input1").show();
+               }
+            })
+        })
+
+        const courseName = document.querySelector(".course-name");
+
+        // course id 
+        let course_id = [
+            {
+                id: 1,
+                name: 'Core Java',
+                price: 89
+            },
+            {
+                id: 2,
+                name: 'Python Beginner',
+                price: 'Free'
+            },
+            {
+                id: 3,
+                name: 'JavaScript Course',
+                price: 69
+            },
+            {
+                id: 4,
+                name: 'PHP Tutorial',
+                price: 89
+            },
+            {
+                id: 5,
+                name: 'Web Development',
+                price: 199
+            },
+        ]
+
+        // get the idd from url
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let idd = urlParams.get('id');
+        let id = parseInt(idd);
+        id -= 1
+        console.log('Received ID:', id);
+
+        // rendering the course details
+        courseName.textContent = `${course_id[id].name}`;
+        document.querySelector(".title").textContent = `${course_id[id].name}`;
+        document.querySelector(".price").textContent = `${course_id[id].price}`+ ".0";
+        document.querySelector(".course-price").textContent = "$ " + `${course_id[id].price}` + ".0";
+
+
+        
+
+
+    </script>
+
+    <script>
+        var ownCoursesList = [];
+
+        //get owncouses from localstorage
+        function getCoursesLocal() {
+            const localCourses = localStorage.getItem("ownCourses");
+            if(localCourses) {
+                return ownCoursesList = JSON.parse(localCourses);
+            }
+        }
+
+        document.querySelector("#btn-pay-now").addEventListener("click", () => {
+            localStorage.setItem("current_course_id", JSON.stringify(id));
+            getCoursesLocal();
+            if(ownCoursesList[ownCoursesList.length-1] == id) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Already purchased!',
+                    text: 'You have already bought this course.',
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "./lecture.html";
+                }
+                })
+            }else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Course purchased!',
+                    text: 'Your payment progress success.',
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    ownCoursesList.push(id);
+                    localStorage.setItem("ownCourses",JSON.stringify(ownCoursesList));
+                    window.location = "./lecture.html";
+                }
+                })
+            }
+        })
+    </script>
+    <script src="../assets/js/middleware.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+    
+</body>
+</html>
