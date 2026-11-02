@@ -124,7 +124,3 @@ Designed and developed by Seeja K, featuring a responsive learning interface, co
 - Swiper.js
 - ScrollReveal.js
 
-## License Attribution
-
-- This customized project is based on the open-source **Dev Geeks Learning Web Application** by [DevGeeksMyanmar](https://github.com/DevGeeksMyanmar/learning_app).
-- Preserved under the original license terms (see [LICENSE](LICENSE)).
