@@ -101,22 +101,28 @@ npm install
 ---
 
 ## Original Contributors & Credits
+## Developed By
 
-This project was originally developed by the **DevGeeks** team. Full attribution and appreciation to the original authors:
+**Seeja K**
 
-<div align="center">
+Computer Science and Engineering
 
-| Hein Htet San | Wai Yan Tun | Lynn Myat Bhone |
-|---|---|---|
-| <img src='https://github.com/Hein-HtetSan.png' width="100px"> | <img src="https://github.com/sayrgyiwoody.png" width='100px'> | <img src='https://github.com/Lynn-Myat-Bhone.png' width="100px"> |
-| [**Follow**](https://github.com/Hein-HtetSan) | [**Follow**](https://github.com/sayrgyiwoody) | [**Follow**](https://github.com/Lynn-Myat-Bhone) |
+### Project Ownership
 
-| Kyaw Thuta Oo | Pyae Phyo Maung | Htet Aung Hlyan |
-|---|---|---|
-| <img src='https://github.com/CodingbyKira.png' width="100px"> | <img src="https://github.com/Pyae-PhyoMaung.png" width='100px'> | <img src='https://github.com/HAstral.png' width="100px"> |
-| [**Follow**](https://github.com/CodingbyKira) | [**Follow**](https://github.com/Pyae-PhyoMaung) | [**Follow**](https://github.com/HAstral) |
+LearnHub – Online Learning Management Platform
 
-</div>
+Designed and developed by Seeja K, featuring a responsive learning interface, course catalog, video lessons, user registration, enrollment, discussion forums, and learning progress tracking.
+
+### Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript (ES6)
+- Bootstrap 5
+- SASS
+- jQuery
+- Swiper.js
+- ScrollReveal.js
 
 ## License Attribution
 
